@@ -1,6 +1,5 @@
 # POC-Team-C
-
-# POC Team C 
+  
 
 Task List of the Team C 
 
