@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Registration</title>
+    <style>
+        body {
+            background-image: url('office-desk-workspace-bright-color-yellow-background_169016-38713.avif');
+            font-family: Arial, sans-serif;
+            /* background-color: red; */
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            width: 300px;
+            background: white;
+            padding: 20px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Customer Registration</h2>
+        <input type="text" id="name" placeholder="Full Name" required>
+        <select id="gender" required>
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other" selected>Other</option>
+        </select>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="tel" id="phone" placeholder="Phone Number" required>
+        <button onclick="registerCustomer()">Register</button>
+    </div>
+
+    <script>
+            function registerCustomer() {
+            const name = document.getElementById('name').value;
+            const gender = document.getElementById('gender').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            
+            if (name && gender && email && phone) {
+                const customer = { name, gender, email, phone };
+                let customers = JSON.parse(localStorage.getItem('customers')) || [];
+                customers.push(customer);
+                localStorage.setItem('customers', JSON.stringify(customers));
+                alert('Customer Registered Successfully!');
+                document.getElementById('name').value = '';
+                document.getElementById('gender').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('phone').value = '';
+            } else {
+                alert('Please fill all fields');
+            }
+        }
+    </script>
+</body>
+</html>
